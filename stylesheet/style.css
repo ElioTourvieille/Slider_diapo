@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #c5d1e5 0%, #adc0ea 50%, #74aeee 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+}
+
+h2{
+    font-size: 2.8rem;
+    font-family: "Source Code Pro";
+    text-shadow: grey 1px 2px;
+    color: #eaeaea;
+}
+
+section {
+    width: 50%;
+    margin: auto;
+}
+
+.diaporama{
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.buttons{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#nav-pause,#nav-left,#nav-right{
+    border: none;
+    background: transparent;
+    bottom: 0%;
+}
+
+.image-wrapper{
+    display: flex;
+    transition: 0.8s linear;
+}
+
+.image-active{
+    flex: 1 0 100%;
+    position: relative;
+}
+
+.image-active > img{
+    width:100%;
+    border-radius: 15px;
+}
+
+.text{
+    position: absolute;
+    bottom: 0%;
+    left:40%;
+    transform: translate(-25%, -25%);
+}
+
+.screen{
+    position: absolute;
+    top:0%;
+    width:93%;
+    height:70%;
+    border: black solid 28px;
+    border-radius: 15px;
+}
