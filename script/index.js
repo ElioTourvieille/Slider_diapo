@@ -1,6 +1,6 @@
 // GLOBAL VARIABLE
 let counter = 0
-let timer = 0
+let timer
 let images
 let slides
 let slideWidth
@@ -16,10 +16,26 @@ window.onload = () => {
     // Active the buttons right, left and pause
     let next = document.querySelector("#nav-right")
     let prev = document.querySelector("#nav-left")
+    let stop = document.querySelector("#nav-pause")
 
-    next.addEventListener("click", slideNext)
-    prev.addEventListener("click", slidePrev)
-}
+    next.addEventListener("click",() => {
+        slideNext()
+        startTimer() // Restart the slideshow
+    })
+    prev.addEventListener("click",() =>{
+        slidePrev()
+        startTimer() //Restart the slideshow
+    })
+    stop.addEventListener("click", stopTimer)
+
+// Automate the slideshow
+timer = setInterval(slideNext, 3500)
+
+// Responsive
+ window.addEventListener("resize", () => {
+     slideWidth = diapo.getBoundingClientRect().width
+ })
+
 // FUNCTIONS
 function slideNext(){ // SLide on the right
     counter++
@@ -37,4 +53,13 @@ function slidePrev(){ // SLide on the left
     }
     let decal = -slideWidth * counter // To shift the image using CSS transform
     images.style.transform = `translateX(${decal}px)`
+}
+
+function stopTimer(){ // Stop the slideshow
+    clearInterval(timer)
+}
+
+function startTimer(){ // Restart the slideshow
+        timer = setInterval(slideNext, 3500)
+    }
 }

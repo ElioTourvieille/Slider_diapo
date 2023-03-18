@@ -24,15 +24,26 @@ section {
 }
 
 .buttons{
-    margin-top: 30px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-evenly;
+    background-color: #595959;
+    border-radius: 10px;
+    border: #1c1c1c solid 2px;
 }
 
 #nav-pause,#nav-left,#nav-right{
     border: none;
     background: transparent;
-    bottom: 0%;
+    bottom: 0;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:active{
+    transform: translateY(5px);
 }
 
 .image-wrapper{
@@ -52,16 +63,16 @@ section {
 
 .text{
     position: absolute;
-    bottom: 0%;
+    bottom: 0;
     left:40%;
     transform: translate(-25%, -25%);
 }
 
 .screen{
     position: absolute;
-    top:0%;
+    top:0;
     width:93%;
-    height:70%;
+    height:71%;
     border: black solid 28px;
     border-radius: 15px;
 }
