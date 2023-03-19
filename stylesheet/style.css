@@ -48,7 +48,7 @@ button:active{
 
 .image-wrapper{
     display: flex;
-    transition: 0.8s linear;
+    transition: 1s linear;
 }
 
 .image-active{

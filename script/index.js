@@ -5,31 +5,32 @@ let images
 let slides
 let slideWidth
 
-window.onload = () => {
-    const diapo = document.querySelector(".diaporama")
-    images = document.querySelector(".image-wrapper")
-    slides = Array.from(images.children)
 
-    // Calculate the width of diaporama
-    slideWidth = diapo.getBoundingClientRect().width
+const diapo = document.querySelector(".diaporama")
+images = document.querySelector(".image-wrapper")
+slides = Array.from(images.children)
 
-    // Active the buttons right, left and pause
-    let next = document.querySelector("#nav-right")
-    let prev = document.querySelector("#nav-left")
-    let stop = document.querySelector("#nav-pause")
+// Calculate the width of diaporama
+slideWidth = diapo.getBoundingClientRect().width
 
-    next.addEventListener("click",() => {
-        slideNext()
-        startTimer() // Restart the slideshow
-    })
-    prev.addEventListener("click",() =>{
-        slidePrev()
-        startTimer() //Restart the slideshow
-    })
-    stop.addEventListener("click", stopTimer)
+// Active the buttons right, left and pause
+let next = document.querySelector("#nav-right")
+let prev = document.querySelector("#nav-left")
+let stop = document.querySelector("#nav-pause")
+
+next.addEventListener("click",() => {
+    slideNext()
+    startTimer() // Restart the slideshow
+})
+prev.addEventListener("click",() =>{
+    slidePrev()
+    startTimerBack() //Restart the slideshow in other side
+})
+
+stop.addEventListener("click", stopTimer)
 
 // Automate the slideshow
-timer = setInterval(slideNext, 3500)
+timer = setInterval(slideNext, 4000)
 
 // Responsive
  window.addEventListener("resize", () => {
@@ -59,7 +60,12 @@ function stopTimer(){ // Stop the slideshow
     clearInterval(timer)
 }
 
-function startTimer(){ // Restart the slideshow
-        timer = setInterval(slideNext, 3500)
-    }
+function startTimer(){// Restart the slideshow
+    clearInterval(timer)
+    timer = setInterval(slideNext, 4000)
+}
+
+function startTimerBack(){// Restart the slideshow
+    clearInterval(timer)
+    timer = setInterval(slidePrev, 4000)
 }
