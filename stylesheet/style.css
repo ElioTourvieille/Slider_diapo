@@ -38,6 +38,24 @@ section {
     bottom: 0;
 }
 
+#nav-pause[data-state="active"] {
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0% {
+        opacity:1;
+        transform: scale(1);
+        }
+    50%{
+        opacity: 0.5;
+        transform: scale(0.85);
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
 button:hover{
     cursor: pointer;
 }

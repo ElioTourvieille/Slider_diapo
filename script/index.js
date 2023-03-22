@@ -5,7 +5,6 @@ let images
 let slides
 let slideWidth
 
-
 const diapo = document.querySelector(".diaporama")
 images = document.querySelector(".image-wrapper")
 slides = Array.from(images.children)
@@ -14,23 +13,35 @@ slides = Array.from(images.children)
 slideWidth = diapo.getBoundingClientRect().width
 
 // Active the buttons right, left and pause
+let stop = document.querySelector("#nav-pause")
 let next = document.querySelector("#nav-right")
 let prev = document.querySelector("#nav-left")
-let stop = document.querySelector("#nav-pause")
+
+stop.addEventListener("click", function () {
+    let pulse = stop.getAttribute("data-state")
+// Use the data-state to activate the animation and pause/restart
+    if (pulse === 'initial'){
+        stop.setAttribute("data-state", "active")
+        stopTimer()
+    } else {
+        stop.setAttribute("data-state", "initial")
+        startTimer()
+    }
+})
 
 next.addEventListener("click",() => {
     slideNext()
+    stop.setAttribute("data-state", "initial")
     startTimer() // Restart the slideshow
 })
 prev.addEventListener("click",() =>{
     slidePrev()
-    startTimerBack() //Restart the slideshow in other side
+    stop.setAttribute("data-state", "initial")
+    startTimerBack() //Restart the slideshow in prev side
 })
 
-stop.addEventListener("click", stopTimer)
-
 // Automate the slideshow
-timer = setInterval(slideNext, 4000)
+timer = setInterval(slideNext, 3500)
 
 // Responsive
  window.addEventListener("resize", () => {
@@ -62,10 +73,10 @@ function stopTimer(){ // Stop the slideshow
 
 function startTimer(){// Restart the slideshow
     clearInterval(timer)
-    timer = setInterval(slideNext, 4000)
+    timer = setInterval(slideNext, 3500)
 }
 
-function startTimerBack(){// Restart the slideshow
+function startTimerBack(){// Restart the slideshow in prev side
     clearInterval(timer)
-    timer = setInterval(slidePrev, 4000)
+    timer = setInterval(slidePrev, 3500)
 }
